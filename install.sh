@@ -54,4 +54,7 @@ brew install rbenv ruby-build
 #----------------------------------------------------------------------------
 echo
 echo "** Installing PHP & Composer"
-brew install php composer
+brew install php composer pkg-config imagemagick
+
+pecl install imagick
+export PATH=$PATH:~/.composer/vendor/bin
