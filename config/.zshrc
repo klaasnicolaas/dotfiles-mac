@@ -148,3 +148,6 @@ git_rm_branches() {
       ;;
   esac
 }
+
+# Added by `rbenv init` on Fri Aug  9 10:42:39 CEST 2024
+eval "$(rbenv init - --no-rehash zsh)"
