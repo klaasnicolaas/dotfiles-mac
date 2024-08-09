@@ -76,6 +76,10 @@ The following tools are not installed by default, but are recommended for develo
 - [Docker Desktop for Mac](https://www.docker.com/products/docker-desktop)
 - [Rectangle](https://rectangleapp.com)
 - [VSCode](https://code.visualstudio.com)
+- [iTerm2](https://iterm2.com)
+- [DBngin](https://dbngin.com)
+- [Postman](https://www.postman.com)
+- [Laravel Valet](https://laravel.com/docs/11.x/valet)
 
 ## License
 
