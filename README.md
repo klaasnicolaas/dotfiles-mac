@@ -42,6 +42,14 @@ git config --global user.name "John Doe"
 git config --global user.email "hello@example.com"
 ```
 
+In case you have issues with pushing to a repository, you can increase the buffer size with the following command:
+
+Error message: `error: RPC failed; HTTP 400 curl 22 The requested URL returned error: 400`
+
+```bash
+git config --global http.postBuffer 157286400
+```
+
 ### Install a python version
 
 The use of **pyenv** is recommended to manage multiple python versions, with the `grep` command we can narrow down the list with newer versions.
