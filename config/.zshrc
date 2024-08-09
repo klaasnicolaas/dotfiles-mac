@@ -122,6 +122,11 @@ alias uv_install="uv pip install -r requirements.txt"
 alias uv_venv="uv venv"
 alias uvdate="uv self update"
 
+# Bundle
+alias bundle_start="bundle exec bin/dev"
+alias bundle_migrate="bundle exec bin/rails db:migrate"
+alias bundle_seed="bundle exec bin/rails db:seed"
+
 # Pyenv
 alias pyenv_list='pyenv install --list | grep -E "^\s*3\.(11|12|13)(\..*|-dev.*)"'
 
@@ -151,3 +156,6 @@ git_rm_branches() {
 
 # Added by `rbenv init` on Fri Aug  9 10:42:39 CEST 2024
 eval "$(rbenv init - --no-rehash zsh)"
+
+# Composer
+export PATH=$PATH:~/.composer/vendor/bin
