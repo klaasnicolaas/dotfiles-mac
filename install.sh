@@ -36,6 +36,13 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/cust
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting --depth 1
 
 #----------------------------------------------------------------------------
+# nvm (nodejs) & Yarn
+#----------------------------------------------------------------------------
+echo
+echo "** Installing nvm & Yarn"
+brew install nvm yarn
+
+#----------------------------------------------------------------------------
 # Pyenv (Python) & Uv (Python package manager)
 #----------------------------------------------------------------------------
 echo

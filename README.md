@@ -20,6 +20,7 @@ The following platforms are installed and set up by default with the bash script
 - [Oh My Zsh][omz] (with powerlevel10k theme and many plugins)
 - [Pyenv][pyenv] - Python version manager
 - [Uv][uv] - Python virtual environment manager
+- [Nvm][nvm] - Node version manager (with [yarn])
 - [Rbenv][rbenv] - Ruby version manager (with ruby-build)
 - [Composer][composer] - PHP dependency manager
 
@@ -30,6 +31,7 @@ After running the bash script, there are still some manual installations that ne
 This is the case for:
 
 - [Git config](#setup-git-config) (name and email)
+- [Node.JS/NPM](#setup-nodejsnpm) (via nvm)
 - [Python](#install-a-python-version) (via pyenv)
 - [Ruby](#install-a-ruby-version) (via rbenv)
 
@@ -60,6 +62,16 @@ pyenv install 3.12.5
 pyenv global 3.12.5
 ```
 
+### Setup Node.JS/NPM
+
+Version 20 is currently the LTS version.
+
+```bash
+nvm install 20
+nvm use 20
+nvm alias default 20
+```
+
 ### Install a ruby version
 
 The use of **rbenv** is recommended to manage multiple ruby versions.
@@ -77,7 +89,6 @@ The following tools are not installed by default, but are recommended for develo
 - [Rectangle](https://rectangleapp.com)
 - [VSCode](https://code.visualstudio.com)
 - [iTerm2](https://iterm2.com)
-- [DBngin](https://dbngin.com)
 - [Postman](https://www.postman.com)
 - [Laravel Valet](https://laravel.com/docs/11.x/valet)
 
@@ -93,3 +104,5 @@ Distributed under the **MIT** License. See [`LICENSE`](LICENSE) for more informa
 [pyenv]: https://github.com/pyenv/pyenv
 [rbenv]: https://github.com/rbenv/rbenv
 [uv]: https://github.com/astral-sh/uv
+[yarn]: https://yarnpkg.com
+[nvm]: https://github.com/nvm-sh/nvm
