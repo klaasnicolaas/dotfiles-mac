@@ -91,6 +91,7 @@ The following tools are not installed by default, but are recommended for develo
 - [iTerm2](https://iterm2.com)
 - [Postman](https://www.postman.com)
 - [Laravel Valet](https://laravel.com/docs/11.x/valet)
+- [PHP Monitor](https://github.com/nicoverbruggen/phpmon)
 
 ## License
 
