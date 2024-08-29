@@ -162,5 +162,8 @@ git_rm_branches() {
 # Added by `rbenv init` on Fri Aug  9 10:42:39 CEST 2024
 eval "$(rbenv init - --no-rehash zsh)"
 
+# uv
+export PATH="/Users/klaas/.local/bin:$PATH"
+
 # Composer
 export PATH=$PATH:~/.composer/vendor/bin
