@@ -136,6 +136,8 @@ alias bundle_seed="bundle exec bin/rails db:seed"
 alias pyenv_list='pyenv install --list | grep -E "^\s*3\.(11|12|13)(\..*|-dev.*)"'
 
 # Git
+alias gitnext='fn_nextgitbranch'
+alias gmrnext='fn_mrgreen_nextbranch'
 git_rm_branches() {
   local branches=$(git branch | grep "$1")
 
@@ -157,6 +159,42 @@ git_rm_branches() {
       echo "Operation cancelled."
       ;;
   esac
+}
+
+function fn_mrgreen_nextgitbranch() {
+  if [[ -n "$1" && "$1" =~ ^[0-9]+$ ]]; then
+    local task_number="$1"
+  else
+    # Ask for task number
+    echo -n "Enter the task number (e.g. 1001): "
+    read task_number
+  fi
+
+  # Check on valid input
+  if [[ -z "$task_number" || ! "$task_number" =~ ^[0-9]+$ ]]; then
+    echo "No valid task number provided. Try again..."
+    return 1
+  fi
+
+  git checkout -b "klaas-REND-${task_number}"
+}
+
+function fn_nextgitbranch() {
+  current_year=$(date +%Y)
+
+  last_branch=$(git branch --list "klaas-${current_year}-*" | sort -r | head -n 1)
+
+  if [[ -n "$last_branch" ]]; then
+    last_number=${last_branch##*-}
+    new_number=$(printf "%03d" $((10#$last_number + 1)))
+  else
+    new_number="001"
+  fi
+
+  new_branch="klaas-${current_year}-${new_number}"
+
+  # Switch to new branch
+  git checkout -b $new_branch
 }
 
 # Added by `rbenv init` on Fri Aug  9 10:42:39 CEST 2024
