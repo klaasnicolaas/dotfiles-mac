@@ -83,6 +83,7 @@ plugins=(
     laravel
     rbenv
     yarn
+    vagrant
 )
 
 # Custom plugins
@@ -136,8 +137,8 @@ alias bundle_seed="bundle exec bin/rails db:seed"
 alias pyenv_list='pyenv install --list | grep -E "^\s*3\.(11|12|13)(\..*|-dev.*)"'
 
 # Git
-alias gitnext='fn_nextgitbranch'
-alias gmrnext='fn_mrgreen_nextbranch'
+alias gnext='fn_nextgitbranch'
+alias gmrnext='fn_mrgreen_nextgitbranch'
 git_rm_branches() {
   local branches=$(git branch | grep "$1")
 
