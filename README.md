@@ -67,9 +67,9 @@ pyenv global 3.12.5
 Version 20 is currently the LTS version.
 
 ```bash
-nvm install 20
-nvm use 20
-nvm alias default 20
+nvm install 22
+nvm use 22
+nvm alias default 22
 ```
 
 ### Install a ruby version
