@@ -201,8 +201,12 @@ function fn_nextgitbranch() {
 # Added by `rbenv init` on Fri Aug  9 10:42:39 CEST 2024
 eval "$(rbenv init - --no-rehash zsh)"
 
-# uv
-export PATH="/Users/klaas/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # Composer
 export PATH=$PATH:~/.composer/vendor/bin
+
+# Pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
