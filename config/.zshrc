@@ -163,21 +163,33 @@ git_rm_branches() {
 }
 
 function fn_mrgreen_nextgitbranch() {
-  if [[ -n "$1" && "$1" =~ ^[0-9]+$ ]]; then
-    local task_number="$1"
-  else
-    # Ask for task number
+  local branch_type task_number
+
+  # Check if arguments are provided
+  if [[ -n "$1" ]]; then
+    if [[ "$1" =~ ^[0-9]+$ ]]; then
+      branch_type="feature"
+      task_number="$1"
+    else
+      branch_type="$1"
+      task_number="$2"
+    fi
+  fi
+
+  # Ask for branch type if not provided
+  if [[ -z "$branch_type" ]]; then
+    echo -n "Enter the branch type (feature/bugfix/release) [default: feature]: "
+    read branch_type
+    branch_type=${branch_type:-feature}
+  fi
+
+  # Ask for task number if not provided
+  while [[ -z "$task_number" || ! "$task_number" =~ ^[0-9]+$ ]]; do
     echo -n "Enter the task number (e.g. 1001): "
     read task_number
-  fi
+  done
 
-  # Check on valid input
-  if [[ -z "$task_number" || ! "$task_number" =~ ^[0-9]+$ ]]; then
-    echo "No valid task number provided. Try again..."
-    return 1
-  fi
-
-  git checkout -b "klaas-REND-${task_number}"
+  git checkout -b "${branch_type}/REND-${task_number}"
 }
 
 function fn_nextgitbranch() {
