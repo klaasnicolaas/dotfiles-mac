@@ -136,6 +136,9 @@ alias bundle_seed="bundle exec bin/rails db:seed"
 # Pyenv
 alias pyenv_list='pyenv install --list | grep -E "^\s*3\.(11|12|13)(\..*|-dev.*)"'
 
+# Balena
+alias balena_dev='fn_balena_dev'
+
 # Git
 alias gnext='fn_nextgitbranch'
 alias gmrnext='fn_mrgreen_nextgitbranch'
@@ -160,6 +163,10 @@ git_rm_branches() {
       echo "Operation cancelled."
       ;;
   esac
+}
+
+function fn_balena_dev() {
+  cat .env | xargs -I@ echo "--env @" | xargs balena push $1
 }
 
 function fn_mrgreen_nextgitbranch() {
