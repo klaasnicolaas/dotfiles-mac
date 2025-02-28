@@ -51,8 +51,8 @@ brew install pyenv uv poetry
 
 # Symlink UV and Poetry to /usr/local/bin to make it available system-wide
 # To fix the error: Executable `uv` not found in pre-commit
-# sudo ln -s ~/.local/bin/uv /usr/local/bin/uv
-sudo ln -s ~/.local/bin/poetry /usr/local/bin/poetry
+sudo ln -s /opt/homebrew/bin/uv /usr/local/bin/uv
+sudo ln -s /opt/homebrew/bin/poetry /usr/local/bin/poetry
 
 #----------------------------------------------------------------------------
 # Rbenv (Ruby) & Ruby-Build
