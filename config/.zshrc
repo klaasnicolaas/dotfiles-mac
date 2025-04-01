@@ -128,6 +128,12 @@ alias uv_install="uv pip install -r requirements.txt"
 alias uv_venv="uv venv"
 alias uvdate="uv self update"
 
+# Php
+alias laravel_clear="php artisan optimize:clear"
+alias pint="./vendor/bin/pint"
+alias pest="./vendor/bin/pest"
+alias phpstan="./vendor/bin/phpstan"
+
 # Bundle
 alias bundle_start="bundle exec bin/dev"
 alias bundle_migrate="bundle exec bin/rails db:migrate"
