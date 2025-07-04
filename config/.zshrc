@@ -133,6 +133,7 @@ alias laravel_clear="php artisan optimize:clear"
 alias pint="./vendor/bin/pint"
 alias pest="./vendor/bin/pest"
 alias phpstan="./vendor/bin/phpstan"
+alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 
 # Bundle
 alias bundle_start="bundle exec bin/dev"
