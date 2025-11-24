@@ -17,7 +17,7 @@ The following platforms are installed and set up by default with the bash script
 
 - [Homebrew][brew] - Package manager for macOS
 - [GitHub CLI][gh] - Command-line tool for GitHub
-- [Oh My Zsh][omz] (with powerlevel10k theme and many plugins)
+- [Oh My Zsh][omz] (with [Oh My Posh][omp] theme and many plugins)
 - [Pyenv][pyenv] - Python version manager
 - [Uv][uv] - Python virtual environment manager
 - [Nvm][nvm] - Node version manager (with [yarn])
@@ -102,6 +102,7 @@ Distributed under the **MIT** License. See [`LICENSE`](LICENSE) for more informa
 [composer]: https://github.com/composer/composer
 [gh]: https://cli.github.com
 [omz]: https://github.com/ohmyzsh/ohmyzsh
+[omp]: https://ohmyposh.dev
 [pyenv]: https://github.com/pyenv/pyenv
 [rbenv]: https://github.com/rbenv/rbenv
 [uv]: https://github.com/astral-sh/uv

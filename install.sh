@@ -19,7 +19,7 @@ brew install gh
 # Oh My Zsh
 #----------------------------------------------------------------------------
 echo
-echo "** Installing Oh My Zsh & powerlevel10k and plugins"
+echo "** Installing Oh My Zsh & Oh My Posh and plugins"
 
 # Copy the .zshrc file
 ln -sf ~/dotfiles-mac/config/.zshrc ~/.zshrc
@@ -27,9 +27,9 @@ ln -sf ~/dotfiles-mac/config/.zshrc ~/.zshrc
 # Install Oh My Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-# Oh my ZSH - theme
-git clone https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k --depth 1
-ln -sf ~/dotfiles-mac/config/.p10k.zsh ~/.p10k.zsh
+# Oh My Posh - theme
+brew install jandedobbeleer/oh-my-posh/oh-my-posh
+ln -sf ~/dotfiles-mac/config/theme.omp.json ~/.config/theme.omp.json
 
 # Oh my ZSH - plugins
 git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions --depth 1
