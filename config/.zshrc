@@ -195,7 +195,7 @@ git_rm_branches() {
 }
 
 function fn_balena_dev() {
-  cat .env | xargs -I@ echo "--env @" | xargs balena push $1
+  cat .env | xargs -I@ echo "--env @" | xargs balena push $1 --registry-secrets registry-secrets.yml --multi-dockerignore
 }
 
 function fn_mrgreen_nextgitbranch() {
