@@ -200,7 +200,7 @@ function fn_mrgreen_nextgitbranch() {
     read task_number
   done
 
-  git checkout -b "${branch_type}/REND-${task_number}"
+  git switch -c "${branch_type}/REND-${task_number}"
 }
 
 function fn_nextgitbranch() {
@@ -218,7 +218,7 @@ function fn_nextgitbranch() {
   new_branch="klaas-${current_year}-${new_number}"
 
   # Switch to new branch
-  git checkout -b $new_branch
+  git switch -c $new_branch
 }
 
 # Added by `rbenv init` on Fri Aug  9 10:42:39 CEST 2024
