@@ -112,6 +112,31 @@ alias zshconfig="mate $HOME/.zshrc"
 alias ohmyzsh="mate $HOME/.oh-my-zsh"
 alias diskspace="sudo du -shx * | sort -rh | head -10"
 
+# Specific aliases for Home Assistant
+alias ha_start="hass -c config"
+alias ha_new="python3 -m script.scaffold integration"
+alias ha_updatereq="python -m script.gen_requirements_all"
+alias ha_hassfest="python -m script.hassfest"
+alias ha_trans="python -m script.translations develop"
+alias ha_install="uv pip install -e ."
+alias ha_installreq="uv pip install -r requirements_all.txt -c homeassistant/package_constraints.txt"
+alias ha_installtest="uv pip install -r requirements_test.txt"
+alias ha_installpre="uv pip install -r requirements_test_pre_commit.txt"
+
+# ha_install_package() {
+#   uv pip install -e ./../python-packages/python-$1
+# }
+
+# Home Assistant tests
+ha_test() {
+    venv_enter
+    pytest --timeout=10 --cov=homeassistant.components.$1 --cov-report term-missing tests/components/$1 -vv
+}
+ha_test_snapshot_update() {
+  venv_enter
+  pytest ./tests/components/$1/ --snapshot-update
+}
+
 # Venv
 alias venv_enter="source .venv/bin/activate"
 alias venv_create="python3 -m venv .venv"
