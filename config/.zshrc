@@ -166,11 +166,24 @@ alias bundle_seed="bundle exec bin/rails db:seed"
 alias pyenv_list='pyenv install --list | grep -E "^\s*3\.(11|12|13)(\..*|-dev.*)"'
 
 # Balena
-alias balena_dev='fn_balena_dev'
+alias balena_dev="fn_balena_dev"
+
+# Balena function
+function fn_balena_dev() {
+  cat .env | xargs -I@ echo "--env @" | xargs balena push $1 --registry-secrets registry-secrets.yml --multi-dockerignore
+}
 
 # Git
-alias gnext='fn_nextgitbranch'
-alias gmrnext='fn_mrgreen_nextgitbranch'
+alias gnext="fn_next_git_branch"
+alias gmrnext="fn_mrgreen_nextgitbranch"
+
+# Git worktree
+alias gwta="git_worktree_add"
+alias gwtr="git_worktree_remove"
+alias gwtn="git_worktree_next"
+alias gwtl="git worktree list"
+
+# Git functions
 git_rm_branches() {
   local branches=$(git branch | grep "$1")
 
@@ -192,10 +205,6 @@ git_rm_branches() {
       echo "Operation cancelled."
       ;;
   esac
-}
-
-function fn_balena_dev() {
-  cat .env | xargs -I@ echo "--env @" | xargs balena push $1 --registry-secrets registry-secrets.yml --multi-dockerignore
 }
 
 function fn_mrgreen_nextgitbranch() {
@@ -228,21 +237,22 @@ function fn_mrgreen_nextgitbranch() {
   git switch -c "${branch_type}/REND-${task_number}"
 }
 
-function fn_nextgitbranch() {
-  current_year=$(date +%Y)
-
-  last_branch=$(git branch --list "klaas-${current_year}-*" | sort -r | head -n 1)
+function fn_get_next_branch_name() {
+  local current_year=$(date +%Y)
+  local last_branch=$(git branch --list "klaas-${current_year}-*" | sort -r | head -n 1)
 
   if [[ -n "$last_branch" ]]; then
-    last_number=${last_branch##*-}
-    new_number=$(printf "%03d" $((10#$last_number + 1)))
+    local last_number=${last_branch##*-}
+    local new_number=$(printf "%03d" $((10#$last_number + 1)))
   else
-    new_number="001"
+    local new_number="001"
   fi
 
-  new_branch="klaas-${current_year}-${new_number}"
+  echo "klaas-${current_year}-${new_number}"
+}
 
-  # Switch to new branch
+function fn_next_git_branch() {
+  local new_branch=$(fn_get_next_branch_name)
   git switch -c $new_branch
 }
 
@@ -250,7 +260,7 @@ function fn_nextgitbranch() {
 function git_worktree_add() {
   if [ -z "$1" ]; then
     echo "Error: Branch name required"
-    echo "Usage: git_worktree_add <branch-name> [location]"
+    echo "Usage: gwta <branch-name> [location]"
     return 1
   fi
 
@@ -263,7 +273,7 @@ function git_worktree_add() {
 function git_worktree_remove() {
   if [ -z "$1" ]; then
     echo "Error: Branch name required"
-    echo "Usage: git_worktree_remove <branch-name> [location]"
+    echo "Usage: gwtr <branch-name> [location]"
     return 1
   fi
 
@@ -272,10 +282,22 @@ function git_worktree_remove() {
   git worktree remove "$location"
 }
 
-# Git worktree aliases
-alias gwta="git_worktree_add"
-alias gwtr="git_worktree_remove"
-alias gwtl="git worktree list"
+function git_worktree_next() {
+  if [ -z "$1" ]; then
+    echo "Error: Feature name required"
+    echo "Usage: gwtn <feature-name>"
+    return 1
+  fi
+
+  local feature_name="$1"
+  local new_branch=$(fn_get_next_branch_name)
+  local location="../${feature_name}"
+
+  echo "Creating branch: $new_branch"
+  echo "Creating worktree: $location"
+
+  git worktree add -b "$new_branch" "$location"
+}
 
 # Added by `rbenv init` on Fri Aug  9 10:42:39 CEST 2024
 eval "$(rbenv init - --no-rehash zsh)"
@@ -289,6 +311,12 @@ export PATH=$PATH:~/.composer/vendor/bin
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
+
+# Android
+export ANDROID_HOME=$HOME/Library/Android/sdk
+
+# Ruby
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
 # Oh My Posh
 eval "$(oh-my-posh init zsh --config ~/.config/theme.omp.json)"
